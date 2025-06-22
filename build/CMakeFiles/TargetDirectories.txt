@@ -1,0 +1,3 @@
+C:/Users/Salih/code/rendering/build/CMakeFiles/texgan.dir
+C:/Users/Salih/code/rendering/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Salih/code/rendering/build/CMakeFiles/ZERO_CHECK.dir

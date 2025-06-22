@@ -911,7 +911,7 @@ std::vector<glm::vec3> getPositions(size_t count) {
 
 auto makeCubes(size_t instanceCount){
     // std::vector<glm::vec3> positions = generateRandom3dPositions(instanceCount, -10.0f, 10.0f);
-    std::vector<glm::vec3> positions = makeGrid(sqrt(instanceCount) + 1, sqrt(instanceCount) + 1, 10.0f, 5.0f);
+    std::vector<glm::vec3> positions = makeGrid(sqrt(instanceCount) + 1, sqrt(instanceCount) + 1, 50.0f, 5.0f);
 
     // Create mesh component
     texgan::ecs::MeshComponent mesh;
@@ -957,16 +957,16 @@ void test(){
     glfwSetInputMode(window.handle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     
 
-    auto mesh = makeCubes(10000);
+    auto mesh = makeCubes(1000);
 
     glm::vec3 rotation(0.0f);
     glm::vec3 scale(1.0f);
 
 
-    for(glm::vec3 pos: makeGrid(5, 5, 20, 2)){
+    for(glm::vec3 pos: makeGrid(5, 5, 100, 5)){
         auto entity = world.createEntity();
         world.addMesh(entity, mesh);
-        world.addTransform(entity, {pos, pos, scale});
+        world.addTransform(entity, {pos, rotation, scale});
         GLenum primitve = true ? GL_TRIANGLES : GL_POINTS;
         world.addRenderComponent(entity, {texgan::ecs::RenderType::Instanced, 0, primitve});
     }
