@@ -2,7 +2,7 @@
 
 // Regular attributes
 layout(location = 0) in vec3 aPos;
-layout(location = 1) in vec3 aNormal;
+layout(location = 1) in vec3 aColor;
 layout(location = 2) in vec2 aTexCoord;
 
 // Instance matrix attributes
@@ -17,23 +17,21 @@ uniform mat4 projection;
 
 uniform bool useInstancing;
 uniform float time;
-uniform vec3 mousePos;  // Normalized mouse position [0,1]
+uniform vec3 mousePos;
 
-
-
-out vec4 posColor;
-
+out vec4 objectColor;
+out vec2 TexCoord;
 
 void main() {
     // Reconstruct instance matrix
     mat4 instanceMatrix = mat4(instanceMatrix0, instanceMatrix1, instanceMatrix2, instanceMatrix3);
-    mat4 world = useInstancing ? instanceMatrix + model : model;
+    mat4 world = useInstancing ? instanceMatrix * model : model; // Changed + to *
 
-    vec3 pos = aPos;
-
-    gl_Position = projection * view * world * vec4(pos, 1.0);
+    vec4 worldPos = world * vec4(aPos, 1.0);
+    gl_Position = projection * view * worldPos;
+    
+    TexCoord = aTexCoord;
     
 
-    // PosColor
-    posColor = vec4(cos(time), sin(time), 0.4, tan(pos.x));
+    objectColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
