@@ -6,7 +6,6 @@
 #include <stb_image.h>
 
 #include <iostream>
-#include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -2204,7 +2203,7 @@ namespace texgan::ui{
 // ==================== Main Application ====================
 
 void startApplication(){
-    auto window = texgan::core::Window(1800, 900, "These people do not exist", true);
+    auto window = texgan::core::Window(1800, 900, "These people do not exist", false);
     auto renderer = texgan::rendering::Renderer(window);
     auto world = texgan::ecs::World();
 

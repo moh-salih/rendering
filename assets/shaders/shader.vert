@@ -23,9 +23,8 @@ out vec4 objectColor;
 out vec2 TexCoord;
 
 void main() {
-    // Reconstruct instance matrix
     mat4 instanceMatrix = mat4(instanceMatrix0, instanceMatrix1, instanceMatrix2, instanceMatrix3);
-    mat4 world = useInstancing ? instanceMatrix * model : model; // Changed + to *
+    mat4 world = useInstancing ? instanceMatrix * model : model; 
 
     vec4 worldPos = world * vec4(aPos, 1.0);
     gl_Position = projection * view * worldPos;

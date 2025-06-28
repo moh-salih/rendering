@@ -1,7 +1,7 @@
 #version 330 core
 
 in vec4 objectColor;
-in vec2 TexCoord;  // Remove the duplicate declaration
+in vec2 TexCoord;  
 
 uniform sampler2D texture0;
 uniform bool useTexture;
